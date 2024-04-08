@@ -7,9 +7,9 @@ app.get("/user-agent", (req, res) => {
 	res.send("User Agent: " + req.headers["user-agent"] + "\n");
 });
 app.get("/health", (req, res) => {
-	res.status(200).json({ message: "Everything is All right" });
+	res.status(200).json({ message: "Everything is All right!" });
 });
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
-	console.log(`Server is running on port ${port}`);
+	console.log(`Server is running well on port ${port}`);
 });
