@@ -11,6 +11,7 @@ phases:
     commands:
       - echo log in to Amazon ECR...
       - aws --version
+      - docker --version
       - echo $AWS_DEFAULT_REGION
       - $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 919139303978.dkr.ecr.us-east-1.amazonaws.com)
       - REPOSITORY_URI=919139303978.dkr.ecr.us-east-1.amazonaws.com/demo-app-ecr-repo
