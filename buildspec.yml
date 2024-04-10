@@ -12,9 +12,11 @@ phases:
       - echo log in to Amazon ECR...
       - aws --version
       - echo $AWS_DEFAULT_REGION
+      - echo $AWS_DEFAULT_ACCESS_KEY_ID
+      - echo $AWS_DEFAULT_ACCESS_KEY
       - aws configure --profile tf-developer
-      - aws configure set aws_access_key_id default_access_key
-      - aws configure set aws_secret_access_key default_secret_key
+      - aws configure set aws_access_key_id $AWS_DEFAULT_ACCESS_KEY_ID
+      - aws configure set aws_secret_access_key AWS_DEFAULT_ACCESS_KEY
       - aws configure set default.region $AWS_DEFAULT_REGION
       - $(aws ecr get-login-password --region us-east-1 --profile tf-developer| docker login --username AWS --password-stdin 919139303978.dkr.ecr.us-east-1.amazonaws.com)
       - REPOSITORY_URI=919139303978.dkr.ecr.us-east-1.amazonaws.com/demo-app-ecr-repo
