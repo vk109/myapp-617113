@@ -12,6 +12,7 @@ phases:
       - echo log in to Amazon ECR...
       - aws --version
       - echo $AWS_DEFAULT_REGION
+      - export aws configure --profile "tf-developer"
       - export AWS_PROFILE=tf-developer
       - $(aws ecr get-login-password --region us-east-1 --profile tf-developer| docker login --username AWS --password-stdin 919139303978.dkr.ecr.us-east-1.amazonaws.com)
       - REPOSITORY_URI=919139303978.dkr.ecr.us-east-1.amazonaws.com/demo-app-ecr-repo
@@ -21,7 +22,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image.
-      - docker build -t $REPOSITORY_URI:latest .
+      - docker build -t --platform=linux/amd64 $REPOSITORY_URI:latest .
       - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
