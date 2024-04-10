@@ -7,7 +7,7 @@ app.get("/user-agent", (req, res) => {
 	res.send("User Agent: " + req.headers["user-agent"] + "\n");
 });
 app.get("/health", (req, res) => {
-	res.status(200).json({ message: "Everything is All right!" });
+	res.status(200).json({ message: "Everything is All right Here!" });
 });
 const port = process.env.PORT || 8000;
 app.listen(port, () => {
