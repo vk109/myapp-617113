@@ -21,7 +21,7 @@ phases:
       - aws configure set profile.vishalkumar.region us-east-1
       - aws configure set preview.cloudsearch true
       - aws ecr get-login-password --region us-east-1 --profile vishalkumar | docker login --username AWS --password-stdin 891377075696.dkr.ecr.us-east-1.amazonaws.com
-      - REPOSITORY_URI=891377075696.dkr.ecr.us-east-1.amazonaws.com//mm-app-ecr-repo
+      - REPOSITORY_URI=891377075696.dkr.ecr.us-east-1.amazonaws.com/mm-app-ecr-repo
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
